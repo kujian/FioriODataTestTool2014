@@ -5,9 +5,27 @@ sap.ui.controller("2014-12-30-fioriodatatest.JsonDemo", {
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 * @memberOf 2014-12-30-fioriodatatest.JsonDemo
 */
-//	onInit: function() {
-//
-//	},
+	onInit: function() {
+		var baseURL = "/sap/opu/odata/sap/CRM_OPPORTUNITY/";
+		var Opp_GUID_5576QHD504 = "Opportunities(guid'3440B5B1-73AE-1EE4-A2B1-7DA4E5BD5129')";
+		var oConfig = { json: true, loadMetadataAsync: false };
+		var oModel = new sap.ui.model.odata.ODataModel(baseURL, oConfig);
+		this.sPath = Opp_GUID_5576QHD504;
+		
+		oModel.read(
+				this.sPath,
+				null,
+				[ "$expand=Notes" ],
+				true,
+				jQuery.proxy(function(odata, response) {
+					console.log("OData response: " + response.body);
+				},this),
+				jQuery.proxy(function(oError){
+					
+					console.error("OData error occurred: " + oError);
+				},this));
+
+	},
 
 /**
 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
