@@ -1,0 +1,35 @@
+{
+"Item": [
+        {
+"Manufacturer": "Microsoft",
+"Type": "Optical Mouse",
+"Price": 300
+        },
+        {
+"Manufacturer": "Intex",
+"Type": "Laptop Mouse",
+"Price": 200
+        },
+        {
+"Manufacturer": "Iball",
+"Type": "Traditional Mouse",
+            "Price": 150
+        },
+        {
+"Manufacturer": "Dell",
+"Type": "Gaming Mouse",
+"Price": 400
+        },
+        {
+"Manufacturer": "Logitech",
+"Type": "Wireless mouse",
+"Price": 500
+        },
+        {
+"Manufacturer": "HP",
+"Type": "Optical Mouse",
+"Price": 300
+        }
+      
+    ]
+}

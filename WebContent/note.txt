@@ -1,0 +1,3 @@
+2014-12-30 19:19PM
+1. first create project locally, then use git init to make it controlled by Git
+2. when using git add to add the file, never forget to add .project .classpath etc.
