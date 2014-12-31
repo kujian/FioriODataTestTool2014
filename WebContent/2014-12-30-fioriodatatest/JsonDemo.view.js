@@ -49,6 +49,40 @@ sap.ui.jsview("2014-12-30-fioriodatatest.JsonDemo", {
                             "Price"),
                width : "100px"
         }));
+        
+     // fourth column "Options"
+        
+        var oDropdownModel = new sap.ui.model.json.JSONModel();
+        oDropdownModel.setData({
+        	hardware:[
+        		{device:"PC", enabled:true},
+        		{device:"Monitor", enabled:true},
+        		{device:"Keyboard", enabled:false},
+        		{device:"Mouse", enabled:true},
+        		{device:"Speaker", enabled:false},
+        		{device:"Printer", enabled:true}],
+        	editable: true, 
+        	tooltip: "Device"});
+
+        // Create a DropdownBox
+        var oDropdownBox3 = new sap.ui.commons.DropdownBox("DropdownBox3");
+        oDropdownBox3.bindProperty("tooltip", "/tooltip");
+        oDropdownBox3.bindProperty("editable", "/editable");
+        oDropdownBox3.setModel(oDropdownModel);
+        var oItemTemplate1 = new sap.ui.core.ListItem();
+        oItemTemplate1.bindProperty("text", "device");
+        oItemTemplate1.bindProperty("enabled", "enabled");
+        oDropdownBox3.bindItems("/hardware", oItemTemplate1);
+
+        oTable.addColumn(new sap.ui.table.Column({
+               label : new sap.ui.commons.Label({
+                     text : "Options"
+               }),
+               template : oDropdownBox3,
+               width : "100px"
+        }));
+        
+        
         return oTable;
 	},
 	
@@ -84,7 +118,6 @@ sap.ui.jsview("2014-12-30-fioriodatatest.JsonDemo", {
          this._oInput = oInput;
          var oLayout = new sap.ui.layout.VerticalLayout("Layout1", {
          	content: [oTable, oInput]
-         	//content: [oInput]
          });
          oLayout.placeAt("content");
 	}
