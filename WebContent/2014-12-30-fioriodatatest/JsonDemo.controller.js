@@ -24,12 +24,15 @@ sap.ui.controller("2014-12-30-fioriodatatest.JsonDemo", {
 					// response.body is a json stream
 					console.log("OData response: " + response.body);
 					var view = controller.getView();
-					var oInput = view._oInput;
+					/*var oInput = view._oInput;
 					var oTextModel = view.oTextModel;
 					oTextModel.oData = response.data;
-					//oTextModel.setData(response.body);
-					oTextModel.updateBindings();                           
-					//console.log(oInput);
+					oTextModel.updateBindings();   */    
+					
+					var oTableModel = view.oTableModel;
+					var oData = oTableModel.oData;
+			        oData.OpportunityNotesSet = response.data.Notes.results;
+					oTableModel.updateBindings();
 				},this),
 				jQuery.proxy(function(oError){
 					

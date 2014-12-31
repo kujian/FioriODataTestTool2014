@@ -16,89 +16,40 @@ sap.ui.jsview("2014-12-30-fioriodatatest.JsonDemo", {
 	createTable: function() {
 
         var oTable = new sap.ui.table.Table({
-               title : "Computer Accessories",
+               title : "Opportunity notes",
                visibleRowCount : 6,
                firstVisibleRow : 0
         });
-        // First column "Manufacturer"
+        // First column 
         oTable.addColumn(new sap.ui.table.Column({
                label : new sap.ui.commons.Label({
-                     text : "Make"
+                     text : "Creator"
                }),
                template : new sap.ui.commons.TextView().bindProperty("text",
-                            "Manufacturer"),
+                            "Creator"),
                width : "100px"
         }));
         
-        // Second column "Type"
+        // Second column 
         oTable.addColumn(new sap.ui.table.Column({
                label : new sap.ui.commons.Label({
-                     text : "Model"
+                     text : "Created Time"
                }),
                template : new sap.ui.commons.TextView().bindProperty("text",
-                            "Type"),
+                            "CreatedAt"),
                width : "100px"
         }));
 
-        // Third column "Price"
+        // Third column 
         oTable.addColumn(new sap.ui.table.Column({
                label : new sap.ui.commons.Label({
-                     text : "Amount"
+                     text : "Content"
                }),
                template : new sap.ui.commons.TextView().bindProperty("text",
-                            "Price"),
+                            "Content"),
                width : "100px"
         }));
         
-     // fourth column "Options"
-
-        // Create a DropdownBox
-        var oDropdownBox3 = new sap.ui.commons.DropdownBox("DropdownBox3");
-        //oDropdownBox3.bindProperty("tooltip", "/tooltip");
-        //oDropdownBox3.bindProperty("editable", "/editable");
-        var oItemTemplate1 = new sap.ui.core.ListItem();
-        oItemTemplate1.bindProperty("text", "device");
-        oItemTemplate1.bindProperty("enabled", "enabled");
-        oDropdownBox3.bindItems("hardware", oItemTemplate1);
-
-        oTable.addColumn(new sap.ui.table.Column({
-               label : new sap.ui.commons.Label({
-                     text : "Options"
-               }),
-               template : oDropdownBox3,
-               width : "100px"
-        }));
-        
-        // another drop down list <<<<<<<< 5 >>>>>>>>>>>>>
-        /*
-        var oDropdownBox4 = new sap.ui.commons.DropdownBox("DropdownBox4");
-        var oDropdownModel4 = new sap.ui.model.json.JSONModel();
-        oDropdownModel4.setData({
-        	hardware:[
-        		{device:"PC", enabled:true},
-        		{device:"Monitor", enabled:true},
-        		{device:"Keyboard", enabled:false},
-        		{device:"Mouse", enabled:true},
-        		{device:"Speaker", enabled:false},
-        		{device:"Printer", enabled:true}],
-        	editable: true, 
-        	tooltip: "Device"});
-        oDropdownBox4.bindProperty("tooltip", "/tooltip");
-        oDropdownBox4.bindProperty("editable", "/editable");
-        oDropdownBox4.setModel(oDropdownModel4);
-        var oItemTemplate2 = new sap.ui.core.ListItem();
-        oItemTemplate2.bindProperty("text", "device");
-        oItemTemplate2.bindProperty("enabled", "enabled");
-        oDropdownBox4.bindItems("/hardware", oItemTemplate2);
-
-        oTable.addColumn(new sap.ui.table.Column({
-               label : new sap.ui.commons.Label({
-                     text : "Options2"
-               }),
-               template : oDropdownBox4,
-               width : "100px"
-        }));
-        */
         return oTable;
 	},
 	
@@ -107,22 +58,26 @@ sap.ui.jsview("2014-12-30-fioriodatatest.JsonDemo", {
 		return this.oTextModel;
 	},
 	
+	createTableJsonModel:function() {
+		this.oTableModel = new sap.ui.model.json.JSONModel({OpportunityNotesSet: {}});
+		return this.oTableModel;
+	},
+	
 	createContent : function(oController) {
-		// Create instance of JSON model
-		
-         var oModel = new sap.ui.model.json.JSONModel();
-         
-         oModel.loadData("json/Item.json");
+
+         /*var oModel = new sap.ui.model.json.JSONModel();
+         oModel.loadData("json/Item.json");*/
 
          var oTable = this.createTable();
-
-         // Bind model to table control
-         oTable.setModel(oModel);
-         oTable.bindRows("/Item");
+         var oTableModel = this.createTableJsonModel();
+         oTable.setModel(oTableModel);
+         //oTable.bindRows("/Item");
+         oTable.bindRows("/OpportunityNotesSet");
          
          
          // handle with text Area
-         /*oInput = new sap.ui.commons.TextArea('input1');
+         /*
+         oInput = new sap.ui.commons.TextArea('input1');
          oInput.bindProperty("value","jsontext>/Description");
          oInput.setTooltip("This is a tooltip");
          oInput.setRows(5);
