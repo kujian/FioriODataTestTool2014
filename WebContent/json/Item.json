@@ -1,19 +1,37 @@
 {
 "Item": [
         {
-"Manufacturer": "Microsoft",
-"Type": "Optical Mouse",
-"Price": 300
+            "Manufacturer": "Microsoft",
+            "Type": "Optical Mouse",
+            "Price": 300,
+            "hardware": [{"device":"PC", "enabled":true}, 
+                         {"device":"Monitor", "enabled":true}, 
+                         {"device":"Keyboard", "enabled":false},
+                         {"device":"Mouse", "enabled":true},
+                         {"device":"Speaker", "enabled":false},
+                         {"device":"Printer", "enabled":true}] 
         },
         {
-"Manufacturer": "Intex",
-"Type": "Laptop Mouse",
-"Price": 200
+            "Manufacturer": "Intex",
+            "Type": "Laptop Mouse",
+            "Price": 200,
+            "hardware": [{"device":"IPAD", "enabled":true}, 
+                         {"device":"Galaxy", "enabled":true}, 
+                         {"device":"Nokia", "enabled":true},
+                         {"device":"HTC", "enabled":true},
+                         {"device":"Min", "enabled":true},
+                         {"device":"Printer", "enabled":true}] 
         },
         {
-"Manufacturer": "Iball",
-"Type": "Traditional Mouse",
-            "Price": 150
+            "Manufacturer": "Iball",
+            "Type": "Traditional Mouse",
+            "Price": 150,
+            "hardware": [{"device":"ABAP", "enabled":true}, 
+                         {"device":"C++", "enabled":true}, 
+                         {"device":"Java", "enabled":true},
+                         {"device":"C#", "enabled":true},
+                         {"device":"Python", "enabled":true},
+                         {"device":"Object C", "enabled":true}] 
         },
         {
 "Manufacturer": "Dell",
