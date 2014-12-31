@@ -12,13 +12,24 @@ sap.ui.controller("2014-12-30-fioriodatatest.JsonDemo", {
 		var oModel = new sap.ui.model.odata.ODataModel(baseURL, oConfig);
 		this.sPath = Opp_GUID_5576QHD504;
 		
+		var controller = this;
+		
+		/* OData read of Notes belongings to given Opportunity */
 		oModel.read(
 				this.sPath,
 				null,
 				[ "$expand=Notes" ],
 				true,
 				jQuery.proxy(function(odata, response) {
+					// response.body is a json stream
 					console.log("OData response: " + response.body);
+					var view = controller.getView();
+					var oInput = view._oInput;
+					var oTextModel = view.oTextModel;
+					oTextModel.oData = response.data;
+					//oTextModel.setData(response.body);
+					oTextModel.updateBindings();                           
+					//console.log(oInput);
 				},this),
 				jQuery.proxy(function(oError){
 					
