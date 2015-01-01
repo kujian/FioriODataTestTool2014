@@ -1,4 +1,5 @@
 jQuery.sap.require("2014-12-30-fioriodatatest.reuselib.reuse");
+jQuery.sap.require("2014-12-30-fioriodatatest.control.AutoCompleteValueHolder");
 
 sap.ui.jsview("2014-12-30-fioriodatatest.JsonDemo", {
 
@@ -93,9 +94,35 @@ sap.ui.jsview("2014-12-30-fioriodatatest.JsonDemo", {
          oInput.attachChange(function(){alert('Text changed to :'+ oInput.getValue());});
          this._oInput = oInput;*/
          
+         var oAutoModel = new sap.ui.model.json.JSONModel();
+         oAutoModel.setData({values: [
+         {code: '0001', description: 'Elem 1'},
+         {code: '0002', description: 'Elem 2'},
+         {code: '0003', description: 'Elem 3'},
+         {code: '0004', description: 'Elem 4'},
+         {code: '0005', description: 'Elem 5'}
+         ]});
+       
+         var field = new AutoCompleteValueHolder('field', {            
+     			layoutData: new sap.ui.commons.form.GridElementData({hCells: "10"}),
+               model: oAutoModel,
+               path: '/values',
+               codePropertyName: 'code',
+               descriptionPropertyName: 'description',
+               selectedItem: function (event) {
+                 alert('selectedItem event:'+event.mParameters.allItems);
+     			  },
+     			  deletedItem: function (event) {
+       				alert('deletedItem event:'+event.mParameters.allItems);
+     			  },
+     			  deletedAllItems: function (event) {
+       				alert('deletedAllItems event');
+       		  }
+     		});         
+         
          var oLayout = new sap.ui.layout.VerticalLayout("Layout1", {
          	//content: [oTable, oInput]
-        	 content:[oTable]
+        	 content:[oTable, field]
          });
          oLayout.placeAt("content");
 	}
