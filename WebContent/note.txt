@@ -1,3 +1,8 @@
 2014-12-30 19:19PM
 1. first create project locally, then use git init to make it controlled by Git
 2. when using git add to add the file, never forget to add .project .classpath etc.
+
+2015-01-01 14:16PM
+1. best practice: reuse library should be put to the same hierarchy of view and controller file,
+then sap.ui.localResources("<XXX>") works as a charm :)
+2. just put the folder name of the view and controller file into sap.ui.localResources 

@@ -1,3 +1,5 @@
+jQuery.sap.require("2014-12-30-fioriodatatest.reuselib.reuse");
+
 sap.ui.controller("2014-12-30-fioriodatatest.JsonDemo", {
 
 /**
@@ -33,6 +35,8 @@ sap.ui.controller("2014-12-30-fioriodatatest.JsonDemo", {
 					var oData = oTableModel.oData;
 			        oData.OpportunityNotesSet = response.data.Notes.results;
 					oTableModel.updateBindings();
+					jQuery.sap.JerryTrace("2015-01-01");
+					
 				},this),
 				jQuery.proxy(function(oError){
 					
