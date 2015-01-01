@@ -10,7 +10,7 @@ sap.ui.controller("2014-12-30-fioriodatatest.JsonDemo", {
 	ODATA_BASEURL:"/sap/opu/odata/sap/CRM_OPPORTUNITY/",
 	
 	onInit: function() {
-		this.testBatchRequest();
+		this.testNoteRead();
 	},
 
 	testNoteRead: function () {
@@ -40,7 +40,6 @@ sap.ui.controller("2014-12-30-fioriodatatest.JsonDemo", {
 			        oData.OpportunityNotesSet = response.data.Notes.results;
 					oTableModel.updateBindings();
 					jQuery.sap.JerryTrace("2015-01-01");
-			controller.testBackendSearch();
 				
 				},this),
 				jQuery.proxy(function(oError){
