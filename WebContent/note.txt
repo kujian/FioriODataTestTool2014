@@ -13,3 +13,5 @@ http://scn.sap.com/community/developer-center/front-end/blog/2014/01/14/custom-s
 
 2015-01-01 20:02PM
 custom control example from here: http://jsbin.com/pamiz/1/edit?html,js,output
+
+20:16PM time formatter see here: http://jsbin.com/aNebeKi/1/edit?html,js,output

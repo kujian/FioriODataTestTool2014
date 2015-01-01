@@ -27,7 +27,16 @@ sap.ui.jsview("2014-12-30-fioriodatatest.JsonDemo", {
         
         var oCreatorColumn = new sap.ui.table.Column({
             label : new sap.ui.commons.Label({ text : "Creator"}),
-            template : new sap.ui.commons.TextView().bindProperty("text", "Creator"),
+            //template : new sap.ui.commons.TextView().bindProperty("text", "Creator"),
+            template: new sap.ui.commons.TextView({
+    					text: {
+    						path : "Creator", 
+    						formatter : function dateShort(name){
+    							var newName = "(" + name + ")";
+    							 return newName;
+    						},
+    					},
+    				}),
             sortProperty: "Creator",       
             filterProperty: "Creator",
             width : "100px" });
