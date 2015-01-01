@@ -7,7 +7,13 @@ sap.ui.controller("2014-12-30-fioriodatatest.JsonDemo", {
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 * @memberOf 2014-12-30-fioriodatatest.JsonDemo
 */
+	ODATA_BASEURL:"/sap/opu/odata/sap/CRM_OPPORTUNITY/",
+	
 	onInit: function() {
+		this.testNoteRead();
+	},
+
+	testNoteRead: function () {
 		var baseURL = "/sap/opu/odata/sap/CRM_OPPORTUNITY/";
 		var Opp_GUID_5576QHD504 = "Opportunities(guid'3440B5B1-73AE-1EE4-A2B1-7DA4E5BD5129')";
 		var oConfig = { json: true, loadMetadataAsync: false };
@@ -15,8 +21,6 @@ sap.ui.controller("2014-12-30-fioriodatatest.JsonDemo", {
 		this.sPath = Opp_GUID_5576QHD504;
 		
 		var controller = this;
-		
-		/* OData read of Notes belongings to given Opportunity */
 		oModel.read(
 				this.sPath,
 				null,
@@ -29,22 +33,42 @@ sap.ui.controller("2014-12-30-fioriodatatest.JsonDemo", {
 					/*var oInput = view._oInput;
 					var oTextModel = view.oTextModel;
 					oTextModel.oData = response.data;
-					oTextModel.updateBindings();   */    
+					oTextModel.updateBindings();   */  
 					
 					var oTableModel = view.oTableModel;
 					var oData = oTableModel.oData;
 			        oData.OpportunityNotesSet = response.data.Notes.results;
 					oTableModel.updateBindings();
 					jQuery.sap.JerryTrace("2015-01-01");
-					
+			controller.testBackendSearch();
+				
 				},this),
 				jQuery.proxy(function(oError){
 					
 					console.error("OData error occurred: " + oError);
 				},this));
-
 	},
+	
+	testBackendSearch:function () {
 
+		var Opp_Search_5576QHD504 = "Opportunities?$skip=0&$top=1&$filter=substringof(%275576%27,Description)";
+		var oConfig = { json: true, loadMetadataAsync: false };
+		var oModel = new sap.ui.model.odata.ODataModel(this.ODATA_BASEURL, oConfig);
+		this.sPath = Opp_Search_5576QHD504;
+		oModel.read(
+				this.sPath,
+				null,
+				null,
+				true,
+				jQuery.proxy(function(odata, response) {
+					// response.body is a json stream
+					console.log("OData response: " + response.body);
+				},this),
+				jQuery.proxy(function(oError){
+					
+					console.error("OData error occurred: " + oError);
+				},this));
+	},
 /**
 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
 * (NOT before the first rendering! onInit() is used for that one!).
