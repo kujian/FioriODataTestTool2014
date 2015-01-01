@@ -10,7 +10,7 @@ sap.ui.controller("2014-12-30-fioriodatatest.JsonDemo", {
 	ODATA_BASEURL:"/sap/opu/odata/sap/CRM_OPPORTUNITY/",
 	
 	onInit: function() {
-		this.testNoteRead();
+		this.testBatchRequest();
 	},
 
 	testNoteRead: function () {
@@ -69,6 +69,25 @@ sap.ui.controller("2014-12-30-fioriodatatest.JsonDemo", {
 					console.error("OData error occurred: " + oError);
 				},this));
 	},
+	
+	testBatchRequest: function() {
+		var Opp_batch_5576QHD504 = "Opportunities(guid'3440B5B1-73AE-1EE4-A2B1-7DA4E5BD5129')";
+		var oConfig = { json: true, loadMetadataAsync: false };
+		this.oModel = new sap.ui.model.odata.ODataModel(this.ODATA_BASEURL, oConfig);
+		
+		this.sPath = Opp_batch_5576QHD504;
+		this.oModel.clearBatch();
+		this.oModel.addBatchReadOperations([this.oModel.createBatchOperation(this.sPath + "?$expand=ChangeDocs,Competitors,OpportunityLogSet","GET")]);
+        this.oModel.addBatchReadOperations([this.oModel.createBatchOperation(this.sPath + "/Products","GET")]);
+
+        this.oModel.submitBatch(jQuery.proxy(function(aResponses) {
+        	console.log("Response: " + aResponses.__batchResponses.length );
+        },this),
+        
+        jQuery.proxy( function() {
+        	console.log("error occurred during batch request");
+        },this))
+	}
 /**
 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
 * (NOT before the first rendering! onInit() is used for that one!).
