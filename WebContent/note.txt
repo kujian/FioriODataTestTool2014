@@ -6,3 +6,7 @@
 1. best practice: reuse library should be put to the same hierarchy of view and controller file,
 then sap.ui.localResources("<XXX>") works as a charm :)
 2. just put the folder name of the view and controller file into sap.ui.localResources 
+
+2015-01-01 17:41PM
+sort and filter: refer to this blog:
+http://scn.sap.com/community/developer-center/front-end/blog/2014/01/14/custom-sorter-and-filter-in-sapui5-table
