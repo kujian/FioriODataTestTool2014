@@ -7,7 +7,6 @@ sap.ui.core.Control.extend("AutoCompleteValueHolder", {
 		   /* means this control has property <code> and <description> */
 		   "codePropertyName": {type : "string", defaultValue: "code"},
 		   "descriptionPropertyName": {type : "string", defaultValue: "description"},
-		   // TODO: test path
            "path": {type : "string", defaultValue: "/"},
            "model": {type : "any", defaultValue: new sap.ui.model.json.JSONModel()},
 		   "suggestValues": {type : "any", defaultValue: []}
@@ -31,14 +30,13 @@ sap.ui.core.Control.extend("AutoCompleteValueHolder", {
         	maxPopupItems: 5,
         	displaySecondaryValues: true,        	
             items: { // built-in items aggregation
-                path: "/", // TODO: test path
+                path: "/", 
                 // do property binding, here we didn't hard code property name "code" and 
                 // "description", but use the passed in value
                 template: new sap.ui.core.ListItem({text: "{"+this.getDescriptionPropertyName()+"}", 
                 	additionalText: "{"+this.getCodePropertyName()+"}"})
         	},
         	change: function change(event) { 
-        	// TODO: debug change
         		if (event.mParameters.selectedItem != null) {
         			var layout = event.getSource().getParent().getParent().mAggregations._layout;
 	    			var content = layout.getContent();
