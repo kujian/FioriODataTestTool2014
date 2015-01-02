@@ -13,11 +13,10 @@
 			<attributes>
 				<ObjectAttribute text="{BuyerName}" />
 				<ObjectAttribute text="{CreatedByBp}" />
-				<ObjectAttribute text="{CreatedAt}" />
+				<ObjectAttribute text="{ path: 'CreatedAt', 
+				formatter: 'scn_exercise.util.Formatter.date' }" />
 			</attributes>
-			<firstStatus>
-				<ObjectStatus text="{LifecycleStatus}" />
-			</firstStatus>
+			
 		</ObjectHeader>
 	</Page>
 </core:View>

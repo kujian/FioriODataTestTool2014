@@ -15,9 +15,7 @@
 				<attributes>
 					<ObjectAttribute text="{BuyerName}" />
 				</attributes>
-				<firstStatus>
-					<ObjectStatus text="{LifecycleStatus}" />
-				</firstStatus>
+				
 			</ObjectListItem>
 		</List>
 	</Page>
