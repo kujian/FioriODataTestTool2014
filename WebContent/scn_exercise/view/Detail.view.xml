@@ -6,11 +6,18 @@
 		title="{i18n>DetailTitle}"
 		showNavButton="true"
 		navButtonPress="handleNavButtonPress" >
-		<VBox>
-			<Text text="{SoId}" />
-			<Text text="{GrossAmount}" />
-			<Text text="{CreatedAt}" />
-			<Text text="{CreatedByBp}" />
-		</VBox>
+		<ObjectHeader
+			title="{SoId}"
+			number="{GrossAmount}"
+			numberUnit="{CurrencyCode}" >
+			<attributes>
+				<ObjectAttribute text="{BuyerName}" />
+				<ObjectAttribute text="{CreatedByBp}" />
+				<ObjectAttribute text="{CreatedAt}" />
+			</attributes>
+			<firstStatus>
+				<ObjectStatus text="{LifecycleStatus}" />
+			</firstStatus>
+		</ObjectHeader>
 	</Page>
 </core:View>

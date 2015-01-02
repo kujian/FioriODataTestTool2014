@@ -1,7 +1,7 @@
 {
 	"SalesOrderCollection": [
 		{
-			"SoId": "300000097",
+			"SoId": "300000197",
 			"ApprovalStatus": "",
 			"Status": "Initial",
 			"ConfirmationStatus": "",
@@ -11,9 +11,9 @@
 			"LifecycleStatus": "P",
 			"LifecycleStatusDesc": "",
 			"GrossAmount": "13224.47",
-			"BuyerName": "11113.00",
+			"BuyerName": "Buyer",
 			"TaxAmount": "2111.47",
-			"CurrencyCode": "EUR",
+			"CurrencyCode": "EUR1",
 			"CreatedAt": "2013-05-22T22:00:00",
 			"ChangedAt": "2013-05-22T22:00:00.000Z",
 			"CreatedByBp": "EPM USER",
