@@ -104,10 +104,65 @@
 			testNoteRead();
             oView.placeAt('content');
         </script>
+        <script src="countdown/jquery.lwtCountdown-1.0.js"></script>
+        <script src="countdown/misc.js"></script>
+        <link rel="Stylesheet" type="text/css" href="countdown/style/main.css"></link>
+        <script>
+			jQuery(document).ready(function() {
+				console.log("is it executed at all?");
+				$('#countdown_dashboard').countDown({
+					targetDate: {
+						'day': 		19,
+						'month': 	1,
+						'year': 	2015,
+						'hour': 	0,
+						'min': 		0,
+						'sec': 		0
+					}
+				});
+			});
+		</script>
+		
     </head>
 
     <body class="sapUiBody" role="application">
-        <div id="content"></div>
+        <div id="content1">
+        <h1>CRM AI Team test</h1>
+        <div id="countdown_dashboard">
+			<div class="dash weeks_dash">
+				<span class="dash_title">weeks</span>
+				<div class="digit">0</div>
+				<div class="digit">0</div>
+			</div>
+
+			<div class="dash days_dash">
+				<span class="dash_title">days</span>
+				<div class="digit">0</div>
+				<div class="digit">0</div>
+			</div>
+
+			<div class="dash hours_dash">
+				<span class="dash_title">hours</span>
+				<div class="digit">0</div>
+				<div class="digit">0</div>
+			</div>
+
+			<div class="dash minutes_dash">
+				<span class="dash_title">minutes</span>
+				<div class="digit">0</div>
+				<div class="digit">0</div>
+			</div>
+
+			<div class="dash seconds_dash">
+				<span class="dash_title">seconds</span>
+				<div class="digit">0</div>
+				<div class="digit">0</div>
+			</div>
+		</div>
+        </div>
+        <div id="content">
+        <h4>place holder for OData table</h4>
+        </div>
         <p>For background, see <a href='http://scn.sap.com/thread/3437301'>Using Table filter when a formatter function is used</a>. This is a single-page MVC version of John Patterson's solution that he <a href='http://jsbin.com/aNebeKi/1/edit'>showed in JSBin</a>.
     </body>
 </html>
