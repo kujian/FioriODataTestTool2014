@@ -107,9 +107,12 @@
         <script src="countdown/jquery.lwtCountdown-1.0.js"></script>
         <script src="countdown/misc.js"></script>
         <link rel="Stylesheet" type="text/css" href="countdown/style/main.css"></link>
+        <script src="snow/snowAnimation.js"></script>
         <script>
 			jQuery(document).ready(function() {
 				var deadline = getDeadline();
+				startSnow();
+				$("body").css('background-color','#D9B300');
 				$('#deadline_title').html("Project deadline: " + getDeadlineString(deadline));
 				$('#countdown_dashboard').countDown({
 					targetDate: {
@@ -127,6 +130,8 @@
     </head>
 
     <body class="sapUiBody" role="application">
+    	<canvas id="canvas" style="position:fixed; top:0px;left:0px;z-index:80;pointer-events:none;"></canvas>
+    	
         <div id="content1">
         <h1 id="deadline_title">Project Deadline: </h1>
         <div id="countdown_dashboard">
