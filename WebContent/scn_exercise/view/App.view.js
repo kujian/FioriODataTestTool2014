@@ -9,7 +9,6 @@ sap.ui.jsview("scn_exercise.view.App", {
 		// to avoid scroll bars on desktop the root view must be set to block display
 		this.setDisplayBlock(true);
 		
-		// create app
 		this.app = new sap.m.App();
 		
 		// load the master page
@@ -17,12 +16,10 @@ sap.ui.jsview("scn_exercise.view.App", {
 		master.getController().nav = this.getController();
 		this.app.addPage(master, true);
 		
-		// load the detail page
 		var detail = sap.ui.xmlview("Detail", "scn_exercise.view.Detail");
 		detail.getController().nav = this.getController();
 		this.app.addPage(detail, false);
 		
-		// done
 		return this.app;
 	}
 });

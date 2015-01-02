@@ -11,6 +11,14 @@ sap.ui.core.UIComponent.extend("scn_exercise.Component", {
 			type : "JS",
 			viewData : { component : this }
 		});
+		
+		// set i18n model
+		var i18nModel = new sap.ui.model.resource.ResourceModel({
+			bundleUrl : "scn_exercise/i18n/messageBundle.properties"
+		});
+		oView.setModel(i18nModel, "i18n");
+		
+		
 
 //		// Using OData model to connect against a real service
 //		var url = "/proxy/http/<server>:<port>/sap/opu/odata/sap/ZGWSAMPLE_SRV/";
@@ -21,7 +29,6 @@ sap.ui.core.UIComponent.extend("scn_exercise.Component", {
 		var oModel = new sap.ui.model.json.JSONModel("scn_exercise/model/mock.json");
 		oView.setModel(oModel);
 
-		// done
 		return oView;
 	}
 });
