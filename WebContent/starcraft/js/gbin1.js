@@ -29,32 +29,9 @@ $(document).ready(function(){
 	
 	$('#navbar a:first').click();
 	
-	/*$('li').live('click', function(e){
+	/*$('li').live('click', function(e){*/
 	
-		if($('#details').is(":visible")){
-			$('#details').hide();
-		}
-	
-		var src = $(this).find('img').attr('src');
-		
-		$('#details').html($('<img>',{
-			src: src,
-			width: '150px',
-			height: '150px'
-		}));
-		
-		var details = $('#details');
-		var offset = $(this).offset();
-		$('#details').css({"left":offset.left-32, "top":offset.top-32}).show(function() {
-			$('#details img').animate({
-				width: '150px', 
-				height: '150px',
-			}, 800);
-		});
-		
-	});		*/
-	
-	$('li').click(function(e){
+	$(window.document).on( "click", "li", function(e) {
 		
 		if($('#details').is(":visible")){
 			$('#details').hide();
