@@ -87,7 +87,7 @@
 	<!-- ============================================================== -->
 
 	<welcome-file-list>
-		<welcome-file>ballindex.html</welcome-file>
+		<welcome-file>page/scn_index.html</welcome-file>
 	</welcome-file-list>
 
 
