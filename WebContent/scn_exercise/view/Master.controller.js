@@ -22,4 +22,8 @@ sap.ui.controller("scn_exercise.view.Master", {
 		var binding = list.getBinding("items");
 		binding.filter(filters);
 	}
+	, handleListSelect : function (evt) { 
+		var context = evt.getParameter("listItem").getBindingContext(); 
+		this.nav.to("Detail", context); 
+	}
 });

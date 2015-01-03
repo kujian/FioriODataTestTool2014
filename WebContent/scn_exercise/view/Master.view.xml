@@ -16,9 +16,11 @@
 		</subHeader>
 		<List
 			id="list"
+			mode="{device>/listMode}" 
+			select="handleListSelect"
 			items="{/SalesOrderCollection}" >
 			<ObjectListItem
-				type="Active"
+				type="{device>/listItemType}"
 				press="handleListItemPress"
 				title="{SoId}"
 				number="{GrossAmount}"

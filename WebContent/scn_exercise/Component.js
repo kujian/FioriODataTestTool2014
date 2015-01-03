@@ -28,6 +28,16 @@ sap.ui.core.UIComponent.extend("scn_exercise.Component", {
 		// Using a local model for offline development
 		var oModel = new sap.ui.model.json.JSONModel("scn_exercise/model/mock.json");
 		oView.setModel(oModel);
+		
+		// set device model
+		var deviceModel = new sap.ui.model.json.JSONModel({
+			isPhone : jQuery.device.is.phone,
+			listMode : (jQuery.device.is.phone) ? "None" : "SingleSelectMaster",
+			listItemType : (jQuery.device.is.phone) ? "Active" : "Inactive"
+		});
+		deviceModel.setDefaultBindingMode("OneWay");
+		oView.setModel(deviceModel, "device");
+		
 
 		return oView;
 	}

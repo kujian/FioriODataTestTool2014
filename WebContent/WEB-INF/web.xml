@@ -87,7 +87,7 @@
 	<!-- ============================================================== -->
 
 	<welcome-file-list>
-		<welcome-file>page/3dbutton.html</welcome-file>
+		<welcome-file>page/scn_index.html</welcome-file>
 	</welcome-file-list>
 
 
