@@ -38,6 +38,16 @@
 				</IconTabFilter>
 			</items>
 		</IconTabBar>
-		
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button
+						text="{i18n>ApproveButtonText}"
+						type="Accept"
+						icon="sap-icon://accept"
+						press="handleApprove" />
+				</contentRight>
+			</Bar>
+		</footer>
 	</Page>
 </core:View>

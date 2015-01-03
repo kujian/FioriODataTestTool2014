@@ -42,5 +42,9 @@
 				
 			</ObjectListItem>
 		</List>
+		<footer> 
+			<Bar> 
+			</Bar> 
+		</footer>
 	</Page>
 </core:View>
