@@ -5,6 +5,7 @@
 	xmlns:core="sap.ui.core" >
 	<Page
 		title="{i18n>DetailTitle}"
+		class="sapUiFioriObjectPage"
 		showNavButton="{device>/isPhone}"
 		navButtonPress="handleNavButtonPress" >
 		<ObjectHeader
@@ -38,6 +39,53 @@
 				</IconTabFilter>
 			</items>
 		</IconTabBar>
+		<Table
+			headerText="{i18n>LineItemTableHeader}"
+			items="{LineItems}" >
+			<columns>
+				<Column>
+					<header><Label text="Product" /></header>
+				</Column>
+				<Column
+					minScreenWidth="Tablet"
+					demandPopin="true"
+					hAlign="Center" >
+					<header><Label text="Delivery Date" /></header>
+				</Column>
+				<Column
+					minScreenWidth="Tablet"
+					demandPopin="true"
+					hAlign="Center" >
+					<header><Label text="Quantity" /></header>
+				</Column>
+				<Column
+					hAlign="Right" >
+					<header><Label text="Price" /></header>
+				</Column>
+			</columns>
+			<ColumnListItem
+				type="Navigation"
+				press="handleLineItemPress" >
+				<cells>
+					<ObjectIdentifier
+						title="{ProductId}" />
+					<Text
+						text="{
+							path:'DeliveryDate',
+							formatter:'scn_exercise.util.Formatter.date'
+						}"/>
+					<Text
+						text="{
+							path:'Quantity',
+							formatter:'scn_exercise.util.Formatter.quantity'
+						}"/>
+					<ObjectNumber
+						number="{GrossAmount}"
+						numberUnit="{CurrencyCode}" />
+				</cells>
+			</ColumnListItem>
+		</Table>
+		
 		<footer>
 			<Bar>
 				<contentRight>

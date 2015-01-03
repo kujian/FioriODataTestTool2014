@@ -28,5 +28,10 @@ sap.ui.controller("scn_exercise.view.Detail", {
 			
 			bundle.getText("ApproveDialogTitle")
 		);
+	},
+	
+	handleLineItemPress : function (evt) {
+		var context = evt.getSource().getBindingContext();
+		this.nav.to("LineItem", context);
 	}
 });
