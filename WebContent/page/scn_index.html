@@ -16,9 +16,11 @@
 
 		<script>
 		sap.ui.localResources("scn_exercise");
-			new sap.ui.core.ComponentContainer({
+		new sap.m.Shell({
+			app : new sap.ui.core.ComponentContainer({
 				name : "scn_exercise"
-			}).placeAt("content");
+			})
+		}).placeAt("content");
 		</script>
 
 	</head>
