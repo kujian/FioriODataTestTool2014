@@ -18,3 +18,7 @@ custom control example from here: http://jsbin.com/pamiz/1/edit?html,js,output
 
 21:43PM refer to this github to get table rendering working via xmlview
 https://github.com/qmacro/sapui5bin/tree/master/SinglePageExamples
+
+2015-01-03 13:17PM
+html5 ball: http://www.cnblogs.com/html5tricks/p/3920630.html
+
