@@ -87,7 +87,7 @@
 	<!-- ============================================================== -->
 
 	<welcome-file-list>
-		<welcome-file>launchpad.html</welcome-file>
+		<welcome-file>000_launchpad.html</welcome-file>
 	</welcome-file-list>
 
 
