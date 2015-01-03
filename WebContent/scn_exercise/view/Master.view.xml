@@ -15,6 +15,17 @@
 				<attributes>
 					<ObjectAttribute text="{BuyerName}" />
 				</attributes>
+
+				<firstStatus>
+					<ObjectStatus
+						text="{
+							path: 'LifecycleStatus',
+							formatter: 'scn_exercise.util.Formatter.statusText'}"
+						state="{
+							path: 'LifecycleStatus',
+							formatter: 'scn_exercise.util.Formatter.statusState'
+						}"  />
+				</firstStatus>
 				
 			</ObjectListItem>
 		</List>

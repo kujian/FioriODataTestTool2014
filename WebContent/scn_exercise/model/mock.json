@@ -9,6 +9,7 @@
 			"OrderingStatus": "",
 			"OrderingStatusDesc": "Initial",
 			"LifecycleStatus": "P",
+			"LifecycleState": "Success",
 			"LifecycleStatusDesc": "",
 			"GrossAmount": "13224.47",
 			"BuyerName": "11113.00",
