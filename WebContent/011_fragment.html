@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class=''>
+<head>
+    <title>一款基于javascript的3D玻璃破碎效果</title>
+    <style class="cp-pen-styles">
+        body
+        {
+            background-color: #f1f1f1;
+            margin: 0;
+            overflow: hidden;
+        }
+        
+        #container
+        {
+            position: absolute;
+            width: 384px;
+            height: 384px;
+            margin: auto;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+        }
+        
+        .fragment
+        {
+            position: absolute;
+            width: 48px;
+            height: 48px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="fragment">
+        </div>
+    </div>
+    <script src='3dmagiccube/js/TweenMax.min.js'></script>
+    <script>
+    function init() {
+    const FRAG_SIZE = 48;
+
+    var defaultEase = Sine.easeOut;
+
+    var container = document.getElementById('container'),
+        containerRect = container.getBoundingClientRect(),
+        fragments = [],
+        centerX = 192,
+        centerY = 192;
+
+    TweenMax.set(container, {
+       perspective:600
+    });
+
+    createFragments();
+    createTweens();
+    startUpdateLoop();
+
+    function createFragments() {
+        var fragment;
+
+        for (var i = 0; i < 8; i++) {
+            for (var j = 0; j < 8; j++) {
+                fragment = document.createElement('div');
+                fragment.className = 'fragment';
+
+                TweenMax.set(fragment, {
+                    x:j * FRAG_SIZE,
+                    y:i * FRAG_SIZE
+                });
+
+                container.appendChild(fragment);
+                fragments.push(fragment);
+            }
+        }
+    }
+
+    function createTweens() {
+        var tl = new TimelineMax({repeat:-1}),
+            fragment,
+            delay;
+
+        for (var i = 0; i < fragments.length; i++) {
+            fragment = fragments[i];
+            delay = 1 - (i % 8) * randomRange(0.04, 0.06);
+
+            if (i < 32) {
+
+                if (i === 0) {
+                    tl.insert(createSpecialTween(fragment), delay);
+                }
+                else {
+                    tl.insert(createArcTween(fragment), delay);
+                }
+                console.log('d1', delay);
+            }
+            else {
+                tl.insert(createStraightTween(fragment), delay);
+                console.log('d2', delay);
+            }
+        }
+    }
+
+    function createSpecialTween(fragment) {
+        var bezierPoints = [
+                {x:centerX - 24, y:-256},
+                {x:centerX - 24, y:centerY - 24}
+            ];
+
+        var tl = new TimelineMax(),
+            tween1 = TweenMax.to(fragment, 1.2, {
+                bezier:{type:'soft', values:bezierPoints},
+                ease:defaultEase
+            }),
+            tween2 = TweenMax.to(fragment, 1.2, {
+                z:525,
+                rotationX:360,
+                rotationY:360,
+                ease:defaultEase
+            });
+
+        tl.insert(tween1);
+        tl.insert(tween2);
+
+        return tl;
+    }
+
+    function createArcTween(fragment) {
+        var dx = (centerX - fragment._gsTransform.x - 24),
+            dy = (centerY - fragment._gsTransform.y - 24);
+
+        var bezierPoints = [
+            {x:fragment._gsTransform.x, y:fragment._gsTransform.y - dy},
+            {x:fragment._gsTransform.x, y:containerRect.bottom}
+        ];
+
+        var tl = new TimelineMax(),
+            tween1 = TweenMax.to(fragment, randomRange(3.2, 3.1), {
+                bezier:{values:bezierPoints},
+                ease:defaultEase
+            }),
+            tween2 = TweenMax.to(fragment, randomRange(3.2, 3.1), {
+                z:randomRange(800, 1000),
+                rotationX:randomRange(360, 1080),
+                rotationY:randomRange(360, 1080),
+                ease:defaultEase
+            });
+
+        tl.insert(tween1);
+        tl.insert(tween2);
+
+        return tl;
+    }
+
+    function createStraightTween(fragment) {
+        var dx = (centerX - fragment._gsTransform.x - 24) * 4;
+
+        return TweenMax.to(fragment, randomRange(3, 3.1), {
+            x:-dx,
+            y:window.innerHeight + containerRect.bottom + randomRange(0, 124),
+            z:randomRange(300, 500) * (Math.random() > 0.5 ? 1 : -1),
+            rotationX:randomRange(360, 1080),
+            rotationY:randomRange(360, 1080),
+            ease:defaultEase
+        })
+    }
+
+    function startUpdateLoop() {
+        requestAnimationFrame(tick);
+
+        function tick() {
+            var fragment,
+                angleX,
+                angleY;
+
+            for (var i = 0; i < fragments.length; i++) {
+                fragment = fragments[i];
+
+                angleX = Math.abs(fragment._gsTransform.rotationX % 180 - 90) / 180;
+                angleY = Math.abs(fragment._gsTransform.rotationY % 180 - 90) / 180;
+
+                var l = Math.round((angleX + angleY) / 2 * 100);
+                fragment.style.backgroundColor = 'hsl(30,100%,' + l + '%)';
+                fragment.style.zIndex = Math.round(fragment._gsTransform.z);
+            }
+
+            requestAnimationFrame(tick);
+        }
+    }
+
+    function randomRange(min, max) {
+        return min + Math.random() * (max - min);
+    }
+}
+
+window.onload = init;//@ sourceURL=pen.js
+    </script>
+</body>
+</html>
