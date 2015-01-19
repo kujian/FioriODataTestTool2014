@@ -1,4 +1,5 @@
 jQuery.sap.require("2014-12-30-fioriodatatest.reuselib.reuse");
+jQuery.sap.require("2014-12-30-fioriodatatest.util.schema");
 
 sap.ui.controller("2014-12-30-fioriodatatest.JsonDemo", {
 
@@ -10,7 +11,47 @@ sap.ui.controller("2014-12-30-fioriodatatest.JsonDemo", {
 	ODATA_BASEURL:"/sap/opu/odata/sap/CRM_OPPORTUNITY/",
 	
 	onInit: function() {
-		this.testNoteRead();
+		this.testNoteUpdate();
+	},
+	
+	testNoteUpdate: function() {
+		var baseURL = "/sap/opu/odata/sap/CRM_OPPORTUNITY/";
+		var Opp_GUID_5576QHD504 = "Opportunities(guid'3440B5B1-73AE-1EE4-A2B1-7DA4E5BD5129')";
+		var oConfig = { json: true, loadMetadataAsync: false };
+		this.oModel = new sap.ui.model.odata.ODataModel(baseURL, oConfig);
+		this.sBackendVersion = SchemaUtil._getServiceSchemaVersion(this.oModel,
+			"Opportunity");	 
+		this.sPath = Opp_GUID_5576QHD504;
+		
+		this.oModel.clearBatch();
+		var nBackendVersion = parseFloat(this.sBackendVersion);
+	    var oETag = null;
+	    // hard code ETAG
+	    var tag = "W/" + "\"" + "'F8473B351669B7222ABB93C923227B5639D2E9A5'" + "\"";
+	    if(nBackendVersion >= 4.0) {
+			oETag = {sETag : tag};
+		}
+	    else{
+	    	console.log("backend not available!!!");
+	    }
+	    this.requestNumber = 0;
+		this.bBasketUpdate = false;
+		var changeSet = []; 
+		var headerGuid = "FA163EEF-573D-1EE4-A0DA-B5AB963752D5"; // 888 in AG3/001
+		var entry = {
+				Guid : headerGuid,
+				Description: "Jerry"
+		};
+		var batchOperation = this.oModel.createBatchOperation("Opportunities(guid'"+headerGuid+"')","MERGE",entry,oETag);
+		
+		changeSet.push(batchOperation);
+		this.oModel.addBatchChangeOperations(changeSet);
+		var x = this.oModel.submitBatch(function(oResponses){
+			console.log("response: " + oResponses);
+		},
+		function(oError){
+			console.log("error: " + oError);						
+		});
 	},
 
 	testNoteRead: function () {
