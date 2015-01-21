@@ -11,10 +11,10 @@ sap.ui.controller("2014-12-30-fioriodatatest.JsonDemo", {
 	ODATA_BASEURL:"/sap/opu/odata/sap/CRM_OPPORTUNITY/",
 	
 	onInit: function() {
-		this.testNoteUpdate();
+		this.testNoteRead();
 	},
 	
-	testNoteUpdate: function() {
+	testOppheaderUpdate: function() {
 		var baseURL = "/sap/opu/odata/sap/CRM_OPPORTUNITY/";
 		var Opp_GUID_5576QHD504 = "Opportunities(guid'3440B5B1-73AE-1EE4-A2B1-7DA4E5BD5129')";
 		var oConfig = { json: true, loadMetadataAsync: false };
@@ -53,10 +53,61 @@ sap.ui.controller("2014-12-30-fioriodatatest.JsonDemo", {
 			console.log("error: " + oError);						
 		});
 	},
-
-	testNoteRead: function () {
+	
+	testNoteUpdate: function() {
 		var baseURL = "/sap/opu/odata/sap/CRM_OPPORTUNITY/";
 		var Opp_GUID_5576QHD504 = "Opportunities(guid'3440B5B1-73AE-1EE4-A2B1-7DA4E5BD5129')";
+		var oConfig = { json: true, loadMetadataAsync: false };
+		this.oModel = new sap.ui.model.odata.ODataModel(baseURL, oConfig);
+		this.sBackendVersion = SchemaUtil._getServiceSchemaVersion(this.oModel,
+			"Opportunity");	 
+		this.sPath = Opp_GUID_5576QHD504;
+		
+		this.oModel.clearBatch();
+		var nBackendVersion = parseFloat(this.sBackendVersion);
+	    var oETag = null;
+	    // hard code ETAG
+	    var tag = "W/" + "\"" + "'20150120084735'" + "\"";
+	    
+	    var newTag;
+	    if(nBackendVersion >= 4.0) {
+			oETag = {sETag : tag};
+		}
+	    else{
+	    	console.log("backend not available!!!");
+	    }
+	    this.requestNumber = 0;
+		this.bBasketUpdate = false;
+		var changeSet = []; 
+		var headerGuid = "3440B5B1-72DE-1ED4-A2D1-EE7101F391CB"; // 2025 in AG3/001
+		var entry = {
+				HeaderGuid : headerGuid,
+				Content: "Jerry"
+		};
+		var noteType = "A002";
+		var language = "ZH";
+		var updatePath = "/Opportunities(guid'" + headerGuid + "')" + "/OpportunityComplexNotesSet("
+        + "TextObjectID='" + noteType + "',TextLanguageID='" + language + "')";
+
+		var newPath = "/OpportunityComplexNotesSet(HeaderGuid=guid'" + headerGuid + "',TextObjectID='" + 
+		noteType + "'" + ",TextLanguageID='" + language + "')";
+		// name must be entitySet: OpportunityComplexNotesSet
+		//var batchOperation = this.oModel.createBatchOperation(newPath,"MERGE",entry,oETag);
+		var batchOperation = this.oModel.createBatchOperation(newPath,"MERGE",entry, oETag);
+		
+		changeSet.push(batchOperation);
+		this.oModel.addBatchChangeOperations(changeSet);
+		var x = this.oModel.submitBatch(function(oResponses){
+			console.log("response: " + oResponses);
+		},
+		function(oError){
+			console.log("error: " + oError);						
+		});
+	},
+	
+	testNoteRead: function () {
+		var baseURL = "/sap/opu/odata/sap/CRM_OPPORTUNITY/";
+		var Opp_GUID_5576QHD504 = "Opportunities(guid'3440B5B1-72DE-1ED4-A2D1-EE7101F391CB')";
 		var oConfig = { json: true, loadMetadataAsync: false };
 		var oModel = new sap.ui.model.odata.ODataModel(baseURL, oConfig);
 		this.sPath = Opp_GUID_5576QHD504;
@@ -65,7 +116,7 @@ sap.ui.controller("2014-12-30-fioriodatatest.JsonDemo", {
 		oModel.read(
 				this.sPath,
 				null,
-				[ "$expand=Notes" ],
+				[ "$expand=ComplexNotes" ],
 				true,
 				jQuery.proxy(function(odata, response) {
 					// response.body is a json stream
@@ -78,7 +129,7 @@ sap.ui.controller("2014-12-30-fioriodatatest.JsonDemo", {
 					
 					var oTableModel = view.oTableModel;
 					var oData = oTableModel.oData;
-			        oData.OpportunityNotesSet = response.data.Notes.results;
+			        oData.OpportunityNotesSet = response.data.ComplexNotes.results;
 					oTableModel.updateBindings();
 					jQuery.sap.JerryTrace("2015-01-01");
 				
