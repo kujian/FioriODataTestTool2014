@@ -3,20 +3,14 @@ jQuery.sap.require("2014-12-30-fioriodatatest.util.schema");
 
 sap.ui.controller("2014-12-30-fioriodatatest.JsonDemo", {
 
-/**
-* Called when a controller is instantiated and its View controls (if available) are already created.
-* Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
-* @memberOf 2014-12-30-fioriodatatest.JsonDemo
-*/
 	ODATA_BASEURL:"/sap/opu/odata/sap/CRM_OPPORTUNITY/",
 	
 	onInit: function() {
-		this.testNoteRead();
+		this.testNoteDelete();
 	},
 	
 	testOppheaderUpdate: function() {
 		var baseURL = "/sap/opu/odata/sap/CRM_OPPORTUNITY/";
-		var Opp_GUID_5576QHD504 = "Opportunities(guid'3440B5B1-73AE-1EE4-A2B1-7DA4E5BD5129')";
 		var oConfig = { json: true, loadMetadataAsync: false };
 		this.oModel = new sap.ui.model.odata.ODataModel(baseURL, oConfig);
 		this.sBackendVersion = SchemaUtil._getServiceSchemaVersion(this.oModel,
@@ -138,6 +132,46 @@ sap.ui.controller("2014-12-30-fioriodatatest.JsonDemo", {
 					
 					console.error("OData error occurred: " + oError);
 				},this));
+	},
+	
+	/* DELETION */
+	
+	testNoteDelete: function () {
+		var baseURL = "/sap/opu/odata/sap/CRM_OPPORTUNITY/";
+		var Opp_GUID_5576QHD504 = "Opportunities(guid'3440B5B1-72DE-1ED4-A2D1-EE7101F391CB')";
+		var oConfig = { json: true, loadMetadataAsync: false };
+		var oModel = new sap.ui.model.odata.ODataModel(baseURL, oConfig);
+		
+		var noteType = "A002";
+		var language = "EN";
+		var headerGuid = "3440B5B1-72DE-1ED4-A2D1-EE7101F391CB";
+		var deletePath = "/OpportunityComplexNotesSet("
+            + "HeaderGuid=guid'" + headerGuid + "',TextObjectID='" + noteType + "',TextLanguageID='" + language + "')";
+
+		var oEntry = {
+                HeaderGuid : headerGuid,
+                TextLanguageID : language,
+                TextObjectID : noteType
+          };
+
+	    // hard code ETAG
+	    var tag = "W/" + "\"" + "'20150121064817'" + "\"";
+	    var oETag = null;
+		oETag = {sETag : tag};
+	    
+		this.sPath = deletePath;
+		
+		var parameter = {
+			oContext: null,
+			fnSuccess: function() {
+				console.log("delete successful");
+			},
+			fnError: function() {
+				console.log("delete failed");
+			},
+			sETag: tag
+		};
+		oModel.remove(this.sPath, parameter);
 	},
 	
 	testBackendSearch:function () {

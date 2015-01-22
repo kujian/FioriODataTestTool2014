@@ -35,8 +35,8 @@ sap.ui.controller("scn_exercise.view.Master", {
 		var item = evt.getParameter("selectedItem");
 		var key = (item) ? item.getKey() : null;
 		if ("GrossAmount" === key || "LifecycleStatus" === key) {
-			sap.ui.demo.myFiori.util.Grouper.bundle = this.getView().getModel("i18n").getResourceBundle();
-			var grouper = sap.ui.demo.myFiori.util.Grouper[key];
+			scn_exercise.util.Grouper.bundle = this.getView().getModel("i18n").getResourceBundle();
+			var grouper = scn_exercise.util.Grouper[key];
 			sorters.push(new sap.ui.model.Sorter(key, true, grouper));
 		}
 
