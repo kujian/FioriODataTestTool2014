@@ -5,11 +5,12 @@ sap.ui.core.UIComponent.extend("scn_exercise.Component", {
 	createContent : function() {
 
 		// create root view
+		// Jerry 2015-02-18 14:02PM
 		var oView = sap.ui.view({
-			id : "app",
+			id : "app11", // Jerry test
 			viewName : "scn_exercise.view.App",
 			type : "JS",
-			viewData : { component : this }
+			viewData : { component : this, jerryTest: "Jerrytest" }
 		});
 		
 		// set i18n model

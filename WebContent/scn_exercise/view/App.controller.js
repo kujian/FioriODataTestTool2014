@@ -17,6 +17,9 @@ sap.ui.controller("scn_exercise.view.App", {
 				viewName : "scn_exercise.view." + pageId,
 				type : "XML"
 			});
+			/* Jerry 2015-02-14 20:49PM
+			 * assign detail controller's nav reference to App.controller
+			 */
 			page.getController().nav = this;
 			app.addPage(page, master);
 			jQuery.sap.log.info("app controller > loaded page: " + pageId);

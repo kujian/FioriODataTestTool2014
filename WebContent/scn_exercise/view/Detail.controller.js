@@ -11,6 +11,9 @@ sap.ui.controller("scn_exercise.view.Detail", {
 		this.byId("SupplierForm").bindElement("BusinessPartner"); 
 	},
 	
+	onInit: function() {
+		debugger;
+	},
 	handleApprove : function (evt) {
 
 		// show confirmation dialog

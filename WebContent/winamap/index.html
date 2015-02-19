@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Winamp2-js</title>
+        <meta charset="utf-8" />
+        <link rel='stylesheet' type='text/css' href='winamp.css' />
+        <style id='skin' media="screen" type="text/css"></style>
+    </head>
+    <body>
+        <div id='winamp' class='stop'>
+            <div id='title-bar' class='selected'>
+                <div id='option'></div>
+                <div id='shade-time'>
+                    <div id='shade-minus-sign'></div>
+                    <div id='shade-minute-first-digit' class='character'></div>
+                    <div id='shade-minute-second-digit' class='character'></div>
+                    <div id='shade-second-first-digit' class='character'></div>
+                    <div id='shade-second-second-digit' class='character'></div>
+                </div>
+                <div id='minimize'></div>
+                <div id='shade'></div>
+                <div id='close'></div>
+            </div>
+            <div class='status'>
+                <div id='clutter-bar'></div>
+                <div id='play-pause'></div>
+                <div id='work-indicator'></div>
+                <div id='time'>
+                    <div id='minus-sign'></div>
+                    <div id='minute-first-digit'></div>
+                    <div id='minute-second-digit'></div>
+                    <div id='second-first-digit'></div>
+                    <div id='second-second-digit'></div>
+                </div>
+                <canvas id='visualizer' width='150' height='32'></canvas>
+            </div>
+            <div class='media-info'>
+                <div id='song-title' class='text'></div>
+                <div id='volume-message' class='text'></div>
+                <div id='balance-message' class='text'></div>
+                <div id='position-message' class='text'></div>
+                <div id='kbps'></div>
+                <div id='khz'></div>
+                <div class='mono-stereo'>
+                    <div id='mono'></div>
+                    <div id='stereo'></div>
+                </div>
+            </div>
+            <input id='volume' type='range' min='0' max='100' step='1' value='50' />
+            <input id='balance' type='range' min='-100' max='100' step='2' value='0' />
+            <div class='windows'>
+                <div id='equalizer'></div>
+                <div id='playlist'></div>
+            </div>
+            <input id='position' type='range' min='0' max='100' step='1' value='0' />
+            <div class='actions'>
+                <div id='previous'></div>
+                <div id='play'></div>
+                <div id='pause'></div>
+                <div id='stop'></div>
+                <div id='next'></div>
+            </div>
+            <div id='eject'>
+                <input id="file-input" type="file" />
+            </div>
+            <div class='shuffle-repeat'>
+                <div id="shuffle"></div>
+                <div id="repeat"></div>
+            </div>
+            <a id='about' target='_blank' href='https://github.com/captbaritone/winamp2-js'></a>
+        </div>
+        <p style="position: absolute; bottom: 0;">by <a href='https://twitter.com/captbaritone'>@captbaritone</a> - <a href='https://github.com/captbaritone/winamp2-js'>GitHub</a></p>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.min.js"></script>
+
+        <script src="file-manager.js"></script>
+        <script src="visualizer.js"></script>
+        <script src="media.js"></script>
+        <script src="font.js"></script>
+        <script src="skin.js"></script>
+        <script src="winamp.js"></script>
+    </body>
+</html>
