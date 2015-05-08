@@ -86,6 +86,9 @@
 	<!-- Welcome file list                                              -->
 	<!-- ============================================================== -->
 
+	<!--  logic of welcome file list: scan index file one by one till one found
+	this file should only make sense for tomcat???
+	 -->
 	<welcome-file-list>
 		<welcome-file>000_launchpad.html</welcome-file>
 	</welcome-file-list>
