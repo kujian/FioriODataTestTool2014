@@ -32,7 +32,7 @@
 	<!-- but has to be switched off for productive use on a Java server! -->
 	<context-param>
 		<param-name>com.sap.ui5.resource.DEV_MODE</param-name>
-		<param-value>false</param-value>
+		<param-value>true</param-value>
 	</context-param>
 	<!-- END: DEV MODE -->
 
