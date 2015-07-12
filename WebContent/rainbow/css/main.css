@@ -1,0 +1,159 @@
+﻿body {
+  background: url('../images/bg.png');
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica;
+}
+
+main {
+  background: #fff;
+  width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 3em 5em;
+  border-left: solid 1px #ddd;
+  border-right: solid 1px #ddd;
+}
+
+.logo {
+  margin-bottom: 10px;
+}
+
+hr {
+  border: none;
+  border-bottom: solid 1px #ddd;
+  width: 860px;
+  margin: 40px -80px;
+}
+
+a, a:visited, a:active {
+  color: #44B1E3;
+}
+
+a:hover {
+  color: #1CB7FF;
+}
+
+h3 a {
+  text-decoration: none;
+}
+
+pre {
+  font-size: 17px;
+}
+
+p {
+  font-size: 19px;
+  line-height: 140%;
+  color: #555;
+  letter-spacing: -0.5px;
+}
+
+code {
+  font-weight: bold;
+}
+
+h2 {
+  text-align: left;
+  margin-top: 30px;
+  font-weight: 300;
+  color: #666;
+  font-size: 36px;
+  border-bottom: 1px dashed #bbb;
+  padding-bottom: 10px;
+  width: 25%;
+}
+
+h3 {
+  margin-top: 30px;
+  font-weight: normal;
+  color: #2284B0;
+  font-size: 24px;
+  /*border-bottom: 1px dashed #bbb;*/
+  padding-bottom: 10px;
+}
+
+#drop-zone {
+  background: rgba(11, 178, 255, 0.05);
+  border: 1px solid rgba(11, 178, 255, 0.15);
+  border-radius: 15px;
+  margin: 0 auto;
+  min-height: 250px;
+  padding-top: 40px;
+}
+
+#drop-zone.uploaded {
+  background: none;
+  padding-top: 0;
+  border: none;
+}
+
+#drop-zone:not(.uploaded).hover {
+  border: 1px solid rgba(11, 178, 255, 0.75);
+}
+
+#drop-zone.uploaded img:not(.prideified) {
+  visibility: hidden;
+}
+
+#drop-zone p {
+  color: #045377;
+}
+
+#drop-zone img {
+  max-width: 100%;
+  max-height: 500px;
+}
+
+.url-entry {
+  font-family: "Helvetica Neue", Helvetica;
+  width: 70%;
+  display: inline-block;
+  border: none;
+  transition: border-bottom .3s ease;
+  border-bottom: 1px dashed #bbb;
+  font-size: 23px;
+  text-align: center;
+  padding: 5px;
+  margin-top: 15px;
+  outline: none;
+}
+
+.url-entry:focus {
+  border-bottom: 1px dashed rgba(11, 178, 255, 0.75);
+}
+
+.docs {
+  text-align: left;
+}
+
+.info-box {
+  background: rgba(255, 255, 140, 0.15);
+  padding: .5em 1.5em;
+}
+
+.info-box p {
+  margin: 10px 0;
+}
+
+.info-box p.type {
+  font-style: italic;
+}
+
+.info-box p.default {
+  font-size: 17px;
+}
+
+.info-box p.name {
+  font-weight: bold;
+}
+
+.emoji {
+  height: 20px;
+  margin-left: 3px;
+  vertical-align: -1px;
+}
+
+.peg-footer {
+  margin-top: 40px;
+  text-align: center;
+}
