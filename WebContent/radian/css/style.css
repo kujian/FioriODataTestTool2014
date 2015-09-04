@@ -1,0 +1,9 @@
+body{
+  background:#000;
+  overflow:hidden;
+  margin:0;
+}
+canvas{
+  width:45%;
+  margin:5% 30%;
+}

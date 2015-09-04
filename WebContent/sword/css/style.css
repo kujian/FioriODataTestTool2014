@@ -1,0 +1,131 @@
+body {
+  background-color: hsl(0, 0%, 5%);
+  overflow: hidden;
+}
+.swords :nth-child(2) {
+  animation-delay: 1s;
+}.swords :nth-child(3) {
+  animation-delay: 2s;
+}.swords :nth-child(4) {
+  animation-delay: 3s;
+}
+.swords :nth-child(5) {
+  animation-delay: 4s;
+}
+.swords {
+  width: 65rem;
+  margin: auto;
+}
+.sword {
+  display: inline-block;
+  margin: 5rem;
+  transform-origin: 50% 75%;
+  animation: 5s swing cubic-bezier(0,1.38,.83,.67) infinite;
+}
+.blade {
+  background-color: hsl(0, 0%, 81%);
+}
+.knob {
+  
+  
+  border-radius: 50%;
+  
+}
+
+.blade, .grip, .knob {
+  margin: auto;
+}
+.guard, .grip {
+  background-color: hsl(53, 19%, 22%);
+}
+
+.samurai {
+  width: 1.5rem;
+}
+
+.samurai .blade {
+  height: 20rem;
+  width: .5rem;
+  border-top-right-radius: 100%;
+  box-shadow: -.25rem 0 0 0 hsla(0, 0%, 51%, .5) inset;
+}
+.samurai .guard {
+  background-color: hsl(48, 95%, 37%);
+  height: .25rem;
+  width: 100%;
+}
+.samurai .grip {
+  height: 6rem;
+  width: .5rem;
+}
+
+.knight {
+  width: 5rem;
+}
+
+.knight .blade {
+  height: 20rem;
+  width: 1rem;
+  border-top-right-radius: 50%;
+  border-top-left-radius: 50%;
+  box-shadow: -.5rem 0 0 0 hsla(0, 0%, 43%, .5) inset;
+}
+.knight .guard, .knight  .grip {
+  background-color: hsl(53, 7%, 41%);
+}
+.knight .guard {
+  height: 0.45rem;
+  width: 100%;
+  border-radius: 33%;
+}
+.knight .grip {
+  height: 4rem;
+  width: 0.7rem;
+  border-radius: 150%;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+.knight .knob {
+  position: relative; top: -.5rem;
+  height: 1rem; width: 1rem;
+  background-color: hsl(0, 0%, 80%);
+}
+
+.jedi, .sith {
+  width: 1.5rem;
+}
+
+.jedi .blade, .sith .blade {
+  height: 20rem;
+  width: .5rem;
+  border-top-right-radius: 0.2rem;
+  border-top-left-radius: 0.2rem;
+}
+.jedi .blade {
+  background-color: hsla(213, 100%, 89%, 1);
+  box-shadow: 0 0 3rem .5rem hsla(210, 100%, 63%, 1);
+}
+.sith .blade {
+  background-color: hsla(0, 100%, 67%, 1);
+  box-shadow: 0 0 2rem .5rem hsla(0, 50%, 59%, .7);
+}
+.jedi.green .blade {
+  background-color: hsl(120, 100%, 65%);
+  box-shadow: 0 0 3rem .5rem hsla(120, 95%, 62%, 0.61);
+}
+.jedi .guard, .sith .guard {
+  background-color: hsl(48, 95%, 37%);
+  height: .25rem;
+  width: 100%;
+}
+.jedi .grip, .sith .grip {
+  height: 6rem;
+  width: .5rem;
+}
+
+@keyframes swing {
+ 
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+ 
+}
