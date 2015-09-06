@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        
+        <title>Starcraft 2 Unit Show Demo</title>
+		
+        	
+        <!-- Our CSS stylesheet file -->
+        <link rel="stylesheet" href="./starcraft/css/styles.css" />
+        
+		<!--[if IE]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+    </head>
+    
+    <body>
+		
+        <header>
+            <h1>Starcraft 2 Unit</h1>
+            <script
+				id="sap-ui-bootstrap"
+				src="resources/sap-ui-core.js"
+				data-sap-ui-theme="sap_bluecrystal"
+				data-sap-ui-libs="sap.m">
+			</script>
+		
+            <script>
+				sap.ui.localResources("starcraft");
+			</script>
+			<script src="./starcraft/js/jquery.quicksand.js"></script>
+        	<script src="./starcraft/js/gbin1.js"></script>	
+        
+        </header>
+		
+        <nav id="navbar"></nav>
+		
+		<span id="details"></span>
+		
+        <section id="container">
+        	<ul id="starcraft">
+				
+            	<li data-tag="Terran unit"><img src="starcraft/unit/scv.gif" alt="Terran unit" /></li>
+				<li data-tag="Protoss unit"><img src="starcraft/unit/probe.gif" alt="Protoss unit" /></li>
+				<li data-tag="Zerg unit"><img src="starcraft/unit/larva.gif" alt="Zerg unit" /></li>
+				<li data-tag="Terran unit"><img src="starcraft/unit/marine.gif" alt="Terran unit" /></li>
+				<li data-tag="Terran unit"><img src="starcraft/unit/marauder.gif" alt="Terran unit" /></li>
+				<li data-tag="Terran unit"><img src="starcraft/unit/reaper.gif" alt="Terran unit" /></li>
+				<li data-tag="Terran unit"><img src="starcraft/unit/ghost.gif" alt="Terran unit" /></li>
+				<li data-tag="Terran unit"><img src="starcraft/unit/hellion.gif" alt="Terran unit" /></li>
+				<li data-tag="Terran unit"><img src="starcraft/unit/siege-tank.gif" alt="Terran unit" /></li>
+				<li data-tag="Terran unit"><img src="starcraft/unit/siege-tank2.gif" alt="Terran unit" /></li>
+				<li data-tag="Terran unit"><img src="starcraft/unit/thor.gif" alt="Terran unit" /></li>
+				<li data-tag="Terran unit"><img src="starcraft/unit/viking.gif" alt="Terran unit" /></li>
+				<li data-tag="Terran unit"><img src="starcraft/unit/viking2.gif" alt="Terran unit" /></li>
+				<li data-tag="Terran unit"><img src="starcraft/unit/medivac.gif" alt="Terran unit" /></li>
+				<li data-tag="Terran unit"><img src="starcraft/unit/raven.gif" alt="Terran unit" /></li>
+				<li data-tag="Terran unit"><img src="starcraft/unit/banshee.gif" alt="Terran unit" /></li>
+				<li data-tag="Terran unit"><img src="starcraft/unit/battlecruiser.gif" alt="Terran unit" /></li>
+				
+				
+				<li data-tag="Protoss unit"><img src="starcraft/unit/zealot.gif" alt="Protoss unit" /></li>
+				<li data-tag="Protoss unit"><img src="starcraft/unit/stalker.gif" alt="Protoss unit" /></li>
+				<li data-tag="Protoss unit"><img src="starcraft/unit/sentry.gif" alt="Protoss unit" /></li>
+				<li data-tag="Protoss unit"><img src="starcraft/unit/observer.gif" alt="Protoss unit" /></li>
+				<li data-tag="Protoss unit"><img src="starcraft/unit/immortal.gif" alt="Protoss unit" /></li>
+				<li data-tag="Protoss unit"><img src="starcraft/unit/warp-prism.gif" alt="Protoss unit" /></li>
+				<li data-tag="Protoss unit"><img src="starcraft/unit/colossus.gif" alt="Protoss unit" /></li>
+				<li data-tag="Protoss unit"><img src="starcraft/unit/phoenix.gif" alt="Protoss unit" /></li>
+				<li data-tag="Protoss unit"><img src="starcraft/unit/voidray.gif" alt="Protoss unit" /></li>
+				<li data-tag="Protoss unit"><img src="starcraft/unit/high-templar.gif" alt="Protoss unit" /></li>
+				<li data-tag="Protoss unit"><img src="starcraft/unit/dark-templar.gif" alt="Protoss unit" /></li>
+				<li data-tag="Protoss unit"><img src="starcraft/unit/archon.gif" alt="Protoss unit" /></li>
+				<li data-tag="Protoss unit"><img src="starcraft/unit/carrier.gif" alt="Protoss unit" /></li>
+				<li data-tag="Protoss unit"><img src="starcraft/unit/mothership.gif" alt="Protoss unit" /></li>
+				
+				
+				<li data-tag="Zerg unit"><img src="starcraft/unit/drone.gif" alt="Zerg unit" /></li>
+				<li data-tag="Zerg unit"><img src="starcraft/unit/overload.gif" alt="Zerg unit" /></li>
+				<li data-tag="Zerg unit"><img src="starcraft/unit/zergling.gif" alt="Zerg unit" /></li>
+				<li data-tag="Zerg unit"><img src="starcraft/unit/queen.gif" alt="Zerg unit" /></li>
+				<li data-tag="Zerg unit"><img src="starcraft/unit/hydralisk.gif" alt="Zerg unit" /></li>
+				<li data-tag="Zerg unit"><img src="starcraft/unit/baneling.gif" alt="Zerg unit" /></li>
+				<li data-tag="Zerg unit"><img src="starcraft/unit/overseer.gif" alt="Zerg unit" /></li>
+				<li data-tag="Zerg unit"><img src="starcraft/unit/roach.gif" alt="Zerg unit" /></li>
+				<li data-tag="Zerg unit"><img src="starcraft/unit/infestor.gif" alt="Zerg unit" /></li>
+				<li data-tag="Zerg unit"><img src="starcraft/unit/mutalisk.gif" alt="Zerg unit" /></li>
+				<li data-tag="Zerg unit"><img src="starcraft/unit/corruptor.gif" alt="Zerg unit" /></li>
+				<li data-tag="Zerg unit"><img src="starcraft/unit/nydus-worm.gif" alt="Zerg unit" /></li>
+				<li data-tag="Zerg unit"><img src="starcraft/unit/ultralisk.gif" alt="Zerg unit" /></li>
+				<li data-tag="Zerg unit"><img src="starcraft/unit/broodlord.gif" alt="Zerg unit" /></li>
+				
+				
+            </ul>
+        </section>
+    </body>
+</html>

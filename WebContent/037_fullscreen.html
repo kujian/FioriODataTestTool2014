@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--  source link: http://jsbin.com/fikocuxiloha/3/edit?html,output
+
+ -->
+<html>
+<head>
+<script src="resources/sap-ui-core.js" id="sap-ui-bootstrap" data-sap-ui-theme="sap_bluecrystal" data-sap-ui-libs="sap.m"></script>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<script>
+  var sc = new sap.m.SplitContainer({
+    masterPages : new sap.m.Page({title : "master"}),
+    detailPages : new sap.m.Page({
+      title : "detail",
+      content : new sap.m.Button({
+        text : "to fullscreen",
+        press : function () {
+          app.to(fullscreen.getId())
+        }
+      })
+    })
+  });
+  fullscreen = new sap.m.Page({
+    title : "fullscreen",
+    content : new sap.m.Button({
+      text : "to master detail",
+      press : function () {
+        app.to(sc.getId())
+      }
+    })
+  });
+  
+  app = new sap.m.App({
+    pages : [sc, fullscreen]
+  }).placeAt("content");
+  
+</script>
+<body id="content">
+ 
+</body>
+</html>

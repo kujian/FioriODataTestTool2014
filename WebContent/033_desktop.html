@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>基于jquery tool实现的windows桌面效果 - 爱编程w2bc.com</title>
+    <link type="text/css" rel="stylesheet" href="desktop/css/css.css" />
+    <link type="text/css" rel="stylesheet" href="desktop/css/jquery.tool.css" />
+    <link type="text/css" rel="stylesheet" href="desktop/css/smartMenu.css" />
+    <script type="text/javascript" src="desktop/js/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="desktop/js/jquery.tool.js"></script>
+    <script type="text/javascript" src="desktop/js/shortcut.js"></script>
+    <script type="text/javascript" src="desktop/js/templates.js"></script>
+    <script type="text/javascript" src="desktop/js/jquery-smartMenu.js"></script>
+    <script type="text/javascript" src="desktop/js/core.js"></script>
+    <script type="text/javascript">
+        $().ready(function () {
+            document.body.onselectstart = document.body.ondrag = function () { return false; }
+            Core.init();
+        });
+    </script>
+</head>
+<body id="lxcn" style="background: url(desktop/images/background.jpg) repeat right bottom transparent;">
+    <div id="task-bar">
+        <ul class="task-window">
+        </ul>
+        <ul class="task-panel">
+            <li class="sys" title="系统设定"><b class="">系统设定</b></li>
+        </ul>
+    </div>
+    <div id="desk">
+        <ul>
+        </ul>
+    </div>
+</body>
+</html>

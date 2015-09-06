@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		
+
+		<!--  Jerry replaced on 2015-05-08 14:25PM in order to host it in github:
+		https://openui5.hana.ondemand.com/resources/sap-ui-core.js
+		resources/sap-ui-core.js
+		 -->
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons,sap.ui.table"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- add sap.ui.table,sap.ui.ux3 and/or other libraries to 'data-sap-ui-libs' if required -->
+
+		<script>
+				sap.ui.localResources("2014-12-30-fioriodatatest");
+				var view = sap.ui.view({id:"idJsonDemo1", viewName:"2014-12-30-fioriodatatest.JsonDemo", type:sap.ui.core.mvc.ViewType.JS});
+				view.placeAt("content");
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>
