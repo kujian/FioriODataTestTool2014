@@ -1,0 +1,14 @@
+.header .camera360 {
+	background: url(../images/bg.jpg) no-repeat -240px -210px;
+	width: 107px;
+}
+.header .egg {
+	background: url(../images/bg.jpg) no-repeat -348px -210px;
+}
+.foot a,.foot span {
+	background: url(../images/bg.jpg) no-repeat 0px -266px;
+	width: 375px;
+}
+#collect_btn {
+	background: url(../images/bg.jpg) no-repeat -154px -455px;
+}
