@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.ui.commons,sap.ui.table"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+<script>
+
+sap.ui.localResources("buttontutorial");
+
+var oLocale = sap.ui.getCore().getConfiguration().getFormatLocale();
+
+var oAppI18nModel = new sap.ui.model.resource.ResourceModel({
+	bundleName : "buttontutorial.i18n",
+	bundleLocale : oLocale
+});
+
+var oButton1 = new sap.ui.commons.Button({
+	id: "JerryButton",
+	text : oAppI18nModel._oResourceBundle.getText("BUTTON_LABEL"),
+	tooltip : "This is a test tooltip",
+	press : function() {
+		console.log('Alert from ' + oButton1.getText());
+		}
+});
+
+
+oButton1.placeAt("content");
+</script>
+<meta charset="UTF-8">
+<title>HTML5 button</title>
+</head>
+<body>
+<div id = "content">
+</div>
+</body>
+</html>

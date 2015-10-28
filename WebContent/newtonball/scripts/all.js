@@ -44,7 +44,7 @@ exports.start = function(){
 		ball: {
 			number: 5,
 			size: 83,
-			image: "newtonball/images/ball.png",
+			image: "newtonballimages/ball.png",
 			lineLength: 300,
 			angleLimit: [30, 150],
 			cycleTime: 800
