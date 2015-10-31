@@ -8,15 +8,13 @@
 		</script>
 <script>
 
-sap.ui.localResources("buttontutorial");
+var oButton1 = new sap.ui.commons.Button({
+    text:"Button" });
+oButton1.placeAt("content");
 
-var oView = sap.ui.view({
-		viewName : "buttontutorial.view.simple",
-		type : sap.ui.core.mvc.ViewType.XML,
-		viewData : undefined
-	});
-	
-oView.placeAt("content");
+jQuery.sap.delayedCall(2000, oButton1, "setText", ["Jerry"]);
+//soButton1.setText("Jerry");
+
 	
 </script>
 <meta charset="UTF-8">
