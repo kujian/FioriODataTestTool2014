@@ -91,7 +91,7 @@
 	000_launchpad.html
 	 -->
 	<welcome-file-list>
-		<welcome-file>080_html5button.html</welcome-file>
+		<welcome-file>006_scn_index.html</welcome-file>
 	</welcome-file-list>
 
 

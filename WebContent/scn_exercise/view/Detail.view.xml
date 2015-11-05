@@ -5,7 +5,7 @@
 	xmlns:core="sap.ui.core" >
 	<Page
 		title="{i18n>DetailTitle}"
-		class="sapUiFioriObjectPage"
+		class="sapUiFioriObjectPage sapUiResponsiveMargin"
 		showNavButton="{device>/isPhone}"
 		navButtonPress="handleNavButtonPress" >
 		<ObjectHeader
@@ -31,7 +31,7 @@
 						<core:Title text="Address" />
 						<Label text="Name"/>
 						<Text text="{CompanyName}" />
-						<Label text="City"/>
+						<Label class = "sapUiSmallMarginEnd" text="City"/>
 						<Text text="{City}, {PostalCode}" />
 						<Label text="Street"/>
 						<Text text="{Street}" />
